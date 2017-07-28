@@ -182,6 +182,7 @@ class BuyCar(object):
 
             driver.implicitly_wait(100)
             driver.find_element_by_xpath('//div[@class="tabcont"]/div[1]/ul[1]/li[2]/a').click()
+
             driver.implicitly_wait(100)
             self.car['ps_airbag'] = driver.find_element_by_xpath(head_xpath + '/div[2]/div[2]/table/tbody/tr[1]/td[1]').text
             driver.implicitly_wait(100)
