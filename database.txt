@@ -1,8 +1,8 @@
 创建数据库
 create database MyCar default character set utf8 collate utf8_general_ci;
 
-建表
-create table SettingInfos (
+建表 - SettingInfos or SUV
+create table SettingInfos/SUV (
 Name varchar(50),
 Company varchar(10),
 Level varchar(10),

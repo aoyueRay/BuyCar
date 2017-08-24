@@ -30,7 +30,11 @@ class BuyCar(object):
         # driver = webdriver.Firefox()
         driver = webdriver.PhantomJS()
         driver.implicitly_wait(100)
-        driver.get('http://car.autohome.com.cn/price/list-8_18-101-0-2-101-0-0-0-0-0-0-0-0-0-0-1.html')
+        # Compact
+        # driver.get('http://car.autohome.com.cn/price/list-8_18-101-0-2-101-0-0-0-0-0-0-0-0-0-0-1.html')
+
+        # SUV
+        driver.get('http://car.autohome.com.cn/price/list-8_18-9-0-0-101-0-0-0-0-0-0-0-0-0-0-1.html')
 
         print 'Start getting URL lists...'
 
@@ -429,7 +433,8 @@ class BuyCar(object):
         Insert infos into databases.
         :return: None
         """
-        sql_insert = 'insert into SettingInfos values ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
+        # sql_insert = 'insert into SettingInfos values ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
+        sql_insert = 'insert into SUV values ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
                      '"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
                      '"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
                      '"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
@@ -474,7 +479,7 @@ class BuyCar(object):
 
         return None
 
-    def close_datanase(self):
+    def close_database(self):
         """
         Close database cursor and conn.
         :return: None
@@ -486,6 +491,6 @@ class BuyCar(object):
 if __name__ == '__main__':
     bc = BuyCar()
     # bc.get_urls()
-    # bc.crwal_urlss()
+    # bc.crwal_urls()
     bc.crawl_infos()
-    bc.close_datanase()
+    bc.close_database()
