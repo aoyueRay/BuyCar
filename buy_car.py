@@ -130,8 +130,8 @@ class BuyCar(object):
             urls = f.readlines()
         print 'Start getting detail infos...'
         print 'There are %d records!' % len(urls)
-        driver = webdriver.Firefox()
-        # driver = webdriver.PhantomJS()
+        # driver = webdriver.Firefox()
+        driver = webdriver.PhantomJS()
         for each_index in xrange(len(urls)):
             each_url = urls[each_index][:-1]
             print '---' * 33
@@ -437,8 +437,7 @@ class BuyCar(object):
         Insert infos into databases.
         :return: None
         """
-        # sql_insert = 'insert into SettingInfos values ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
-        sql_insert = 'insert into SUV values ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
+        sql_insert = 'insert into car_infos values ("%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
                      '"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
                      '"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
                      '"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s",' \
