@@ -27,14 +27,16 @@ class BuyCar(object):
         Append the url in global variable url_list,
         :return:None
         """
-        # driver = webdriver.Firefox()
-        driver = webdriver.PhantomJS()
+        driver = webdriver.Firefox()
+        # driver = webdriver.PhantomJS()
         driver.implicitly_wait(100)
         # Compact
         # driver.get('http://car.autohome.com.cn/price/list-8_18-101-0-2-101-0-0-0-0-0-0-0-0-0-0-1.html')
+        # 10 - 20W 自动档
+        driver.get('https://car.autohome.com.cn/price/list-10_20-0-0-0-101-0-0-0-0-0-0-0-0-0-0-1.html')
 
         # SUV
-        driver.get('http://car.autohome.com.cn/price/list-8_18-9-0-0-101-0-0-0-0-0-0-0-0-0-0-1.html')
+        # driver.get('http://car.autohome.com.cn/price/list-8_18-9-0-0-101-0-0-0-0-0-0-0-0-0-0-1.html')
 
         print 'Start getting URL lists...'
 
@@ -107,7 +109,8 @@ class BuyCar(object):
         try:
             # Get deatil url.
             driver.implicitly_wait(10)
-            detail_url = driver.find_element_by_xpath('//div[@class="tab-content"]/div/ul/li[1]/dl[1]/dd[1]/span[1]/a').get_attribute('href')
+            # detail_url = driver.find_element_by_xpath('//div[@class="tab-content"]/div/ul/li[1]/dl[1]/dd[1]/span[1]/a').get_attribute('href')
+            detail_url = driver.find_element_by_xpath('//div[@id="dealer-box"]/div/ul/li[1]/dl[1]/dd[1]/span[1]/a').get_attribute('href')
             with open('Final.txt', 'a') as f:
                 f.write(detail_url)
                 f.write('\n')
@@ -127,17 +130,18 @@ class BuyCar(object):
             urls = f.readlines()
         print 'Start getting detail infos...'
         print 'There are %d records!' % len(urls)
-        # driver = webdriver.Firefox()
-        driver = webdriver.PhantomJS()
+        driver = webdriver.Firefox()
+        # driver = webdriver.PhantomJS()
         for each_index in xrange(len(urls)):
             each_url = urls[each_index][:-1]
             print '---' * 33
             print '%d:%s' %(each_index + 1, each_url)
 
-            driver.implicitly_wait(10)
+            driver.implicitly_wait(100)
             driver.get(each_url)
 
             self.detail_infos(driver)    # Get detail infos.
+            driver.implicitly_wait(100)
             # break
 
         driver.close()
